@@ -163,4 +163,9 @@ body {
   padding-top: 20px;
 }
 
+/**Boton Eliminar**/
+.delete-product {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=estilos.css.map */

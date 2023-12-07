@@ -1,4 +1,4 @@
-const armarCarrito = () => {}
+const armarCarrito = () => {
     modalContainer.innerHTML = ""
     modalContainer.style.display = "flex"
     const modalHeader = document.createElement("div");
@@ -27,6 +27,13 @@ const armarCarrito = () => {}
             <p>${product.precio} $</p>
         `;
         modalContainer.append(carritoContent)
+
+        let eliminar = document.createElement("span");
+        eliminar.innerText = "❎";
+        eliminar.className = "delete-product";
+        carritoContent.append(eliminar);
+
+        eliminar.addEventListener("click", eliminarProducto)
     });
     
     const total = carrito.reduce((acc, el) => acc + el.precio, 0);
@@ -35,3 +42,16 @@ const armarCarrito = () => {}
     totalCompra.className ="total-content"
     totalCompra.innerHTML = `Total a pagar: ${total} $`; 
     modalContainer.append(totalCompra);
+};
+
+verCarrito.addEventListener("click", armarCarrito)
+
+const eliminarProducto = () => {
+    const foundId = carrito.find((element) => element.id);
+
+    carrito = carrito.filter((carritoId) => {
+    return carritoId !== foundId;
+    });
+
+    armarCarrito();
+};
