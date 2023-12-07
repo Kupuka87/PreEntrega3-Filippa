@@ -3,7 +3,7 @@ const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modal-container");
 const cantidadCarrito = document.getElementById("cantidadCarrito");
 
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 productos.forEach((product)=> {
     let content = document.createElement("div");
@@ -25,7 +25,7 @@ productos.forEach((product)=> {
     comprar.addEventListener("click", () => {
         const repeat  = carrito.some((repeatProduct) => repeatProduct.id === product.id);
 
-            if(repeat){
+        if(repeat){
                 carrito.map((prod) => {
                     if(prod.id === product.id){
                         prod.cantidad++;
@@ -41,10 +41,19 @@ productos.forEach((product)=> {
         });
     }
     carritoCounter();
+    saveLocal();
     });
 });
 
 
+/** setear item **/
+const saveLocal = () => {
 
+    localStorage.setItem("carrito", JSON.stringify (carrito));
 
+};
+
+/**recuperar item**/
+
+JSON.parse(localStorage.getItem("carrito"));
 

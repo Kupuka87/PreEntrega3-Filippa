@@ -181,4 +181,12 @@ body {
   display: none;
 }
 
+.sumar {
+  cursor: pointer;
+}
+
+.restar {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=estilos.css.map */
